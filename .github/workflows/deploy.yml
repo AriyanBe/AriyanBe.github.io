@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: app
+  BUILD_PATH: .
 
 jobs:
   build:
