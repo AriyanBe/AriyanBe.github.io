@@ -8,7 +8,12 @@
 body {
     font-family: 'Arial', sans-serif;
     background-image: url("./circle\ 2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
+    justify-content: center;
+    align-items: center;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
