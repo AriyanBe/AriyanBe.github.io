@@ -1,0 +1,59 @@
+/* CSS with nav-components aligned to the left */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+
+
+.nav-components {
+    display: flex;
+    justify-content: flex-start; 
+    color: #f3eeee;
+    font: 15px Cursive;
+    padding: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: auto;
+    color: #fffefe;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font: 24px Cursive;
+}
+
+.btn:hover {
+    background-color: #21dd76;
+}
+
+.info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font: 24px Cursive;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+#dynamicText {
+    font-weight: bold;
+    color: #21dd76;
+}
