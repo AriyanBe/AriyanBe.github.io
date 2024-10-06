@@ -1,5 +1,4 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Ariyan'
-theme = "congo"
 author = "Ariyan"
