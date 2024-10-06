@@ -100,14 +100,16 @@ footer {
 /* Mobile Responsive Adjustments */
 @media only screen and (max-width: 768px) {
     .split-layout {
-        display: block;
+        display: flex;
+        flex-direction: column; /* Stack the layout vertically for mobile */
+        height: auto;
     }
 
     .left, .right {
         width: 100%;
-        height: auto;
-        padding: 20px;
+        padding: 10px;
         text-align: center;
+        justify-content: center; /* Ensure elements are centered */
     }
 
     .left {
@@ -118,14 +120,16 @@ footer {
 
     .profile-container {
         position: relative;
-        top: auto;
-        left: auto;
+        top: 0;
+        left: 0;
         transform: none;
+        margin-top: 20px;
     }
 
     .profile-pic {
         width: 120px;
         height: 120px;
+        margin-bottom: 10px;
     }
 
     .social-links {
@@ -135,12 +139,15 @@ footer {
 
     nav {
         flex-direction: column;
+        gap: 10px;
+        align-items: center;
         margin-top: 30px;
     }
 
     footer {
-        position: static;
+        position: relative;
         text-align: center;
         margin-top: 20px;
+        padding-bottom: 20px;
     }
 }
