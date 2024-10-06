@@ -96,3 +96,51 @@ footer {
     color: #777;
     font-size: 14px;
 }
+
+/* Mobile Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .split-layout {
+        display: block;
+    }
+
+    .left, .right {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .left {
+        align-items: center; /* Align items in the center for mobile */
+        padding-right: 0;
+        padding-top: 20px;
+    }
+
+    .profile-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .social-links {
+        margin-top: 10px;
+        gap: 15px; /* Reduce gap between icons for mobile */
+    }
+
+    nav {
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    footer {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
