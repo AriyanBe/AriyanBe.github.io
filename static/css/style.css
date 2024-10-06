@@ -100,30 +100,22 @@ footer {
 /* Mobile Responsive Adjustments */
 @media only screen and (max-width: 768px) {
     .split-layout {
-        display: flex;
-        flex-direction: column; /* Stack the layout vertically for mobile */
+        display: block;
         height: auto;
     }
 
     .left, .right {
         width: 100%;
-        padding: 10px;
         text-align: center;
-        justify-content: center; /* Ensure elements are centered */
-    }
-
-    .left {
-        align-items: center; /* Align items in the center for mobile */
-        padding-right: 0;
-        padding-top: 20px;
+        padding: 20px;
+        padding-top: 10px;
     }
 
     .profile-container {
         position: relative;
-        top: 0;
-        left: 0;
         transform: none;
-        margin-top: 20px;
+        margin: 0 auto;
+        padding-top: 20px;
     }
 
     .profile-pic {
@@ -133,21 +125,22 @@ footer {
     }
 
     .social-links {
+        justify-content: center;
         margin-top: 10px;
         gap: 15px; /* Reduce gap between icons for mobile */
     }
 
     nav {
         flex-direction: column;
+        margin-top: 20px;
         gap: 10px;
         align-items: center;
-        margin-top: 30px;
     }
 
     footer {
-        position: relative;
+        position: static;
         text-align: center;
         margin-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 }
