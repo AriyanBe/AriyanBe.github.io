@@ -97,7 +97,7 @@ footer {
     font-size: 14px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
     footer {
         text-align: center;
         font-size: 12px;
@@ -114,5 +114,16 @@ footer {
         text-align: center;
         padding: 10px;
         width: 100%;
+    }
+
+    .profile-pic {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+
+    .left, .right {
+        padding: auto;
+        font-size: 12px;
     }
 }
