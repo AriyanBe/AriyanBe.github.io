@@ -25,8 +25,8 @@ export const profile = {
     {
       heading: "Biology is the starting point.",
       paragraphs: [
-        `I’m ${name}, a biology undergraduate at the ${university}, researcher, and developer. My interests bridge evolutionary and computational biology, genomics, neuroscience, and medicine.`,
-        "My research experience spans three distinct projects: comparative genomics and evolution, single-cell genomics, and codon usage and codon bias. I am interested in using computation to answer biological questions while keeping the underlying biology in view.",
+        `I’m ${name}, a biology undergraduate at the ${university}, student-researcher, and developer. My interests bridge evolutionary and computational biology, genomics, neuroscience, and medicine.`,
+        "My research experience spans three distinct projects: comparative genomics and evolution, single-cell genomics, and codon usage and codon bias and etc. I am interested in using computation to answer biological questions while keeping the underlying biology in view.",
       ],
     },
     {
