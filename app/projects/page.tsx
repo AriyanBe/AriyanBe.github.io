@@ -16,7 +16,7 @@ export default function Projects() {
         number="III"
         label="THE INVENTOR’S CABINET"
         title="Ideas, put to work."
-        description="Tools for medical education, deliberate scientific reading, and reproducible biological inquiry."
+        description="Tools for medical education, deliberate scientific reading, and reproducible biological inquiry. For more information and access to other projects, contact me."
       />
       <div className="project-catalogue">
         {projects.map((p, i) => (

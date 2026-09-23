@@ -47,7 +47,7 @@ export default function About() {
             )}
           </div>
           <p className="caption">
-            {profile.name.toUpperCase()} · BIOLOGY RESEARCHER
+            {profile.name.toUpperCase()} · UNDERGRADUATE STUDENT RESEARCHER
           </p>
         </aside>
       </div>

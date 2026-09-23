@@ -39,8 +39,7 @@ export default function CV() {
       </div>
       {!profile.cv && (
         <p className="editorial-note">
-          This page summarizes education and research direction. A downloadable
-          CV is not currently available.
+          This page summarizes education and research direction. For a full CV, please contact me.
         </p>
       )}
       <Link className="text-link" href="/research/">

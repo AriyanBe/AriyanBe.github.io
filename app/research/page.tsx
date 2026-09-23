@@ -37,7 +37,7 @@ export default function Research() {
         ))}
       </div>
       <p className="editorial-note">
-        These dossiers describe three independent research experiences. Methods
+        These dossiers describe research experiences. Other research projects are private, for more information contact me. Methods
         and interests are distinguished from verified findings; no unreported
         scientific conclusions are implied.
       </p>

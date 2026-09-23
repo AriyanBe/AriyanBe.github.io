@@ -8,7 +8,7 @@ export const timeline = [
   },
   {
     label: "Research",
-    title: "Three independent research projects",
+    title: "Research projects and etc.",
     detail: research.map((entry) => entry.title).join("; ") + ".",
   },
   {

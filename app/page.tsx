@@ -25,7 +25,7 @@ export default function Home() {
             <span className="title-period">.</span>
           </h1>
           <p className="hero-disciplines">
-            BIOLOGY <span>·</span> EVOLUTION <span>·</span> GENOMICS{" "}
+            GENETICS <span>·</span> EVOLUTION <span>·</span>BIOINFORMATICS{" "}
             <span>·</span> MEDICINE
           </p>
           <p className="hero-intro">{profile.introduction}</p>
