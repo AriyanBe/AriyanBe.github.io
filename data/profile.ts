@@ -7,10 +7,11 @@ export const profile = {
     .split(" ")
     .map((part) => part[0])
     .join(""),
-  role: `Biology undergraduate at the ${university}`,
-  goal: "My long-term goal is to become a physician-scientist, connecting biological discovery with the practice of medicine.",
-  description: `Biology undergraduate at the ${university}, exploring evolutionary and computational biology, genomics, neuroscience, and medicine.`,
-  introduction: `I’m a biology undergraduate at the ${university}. I study living systems through evolution, genomics, and computation—with a curiosity that reaches from the smallest cell to the human mind.`,
+  role: "Research in evolutionary genomics & computational biology",
+  goal: "My long-term goal is to become a physician-scientist, with particular interests in neurology, psychiatry, and their intersection.",
+  description: `Research in evolutionary genomics, computational biology, and single-cell transcriptomics by ${name}.`,
+  introduction: "I explore biological systems through evolutionary genomics, computational biology, and single-cell transcriptomics. My research spans molecular evolution, comparative genomics, and gene expression in disease, guided by an ambition to connect scientific discovery with medicine.",
+  disciplines: ["EVOLUTION", "GENOMICS", "BIOINFORMATICS", "MEDICINE"],
   email: "ariyanbeh@gmail.com",
   github: "https://github.com/AriyanBe",
   siteUrl:
@@ -22,21 +23,28 @@ export const profile = {
   cv: "",
   copyrightYear: 2026,
   biography: [
-    {
-      heading: "Biology is the starting point.",
-      paragraphs: [
-        `I’m ${name}, a biology undergraduate at the ${university}, student-researcher, and developer. My interests bridge evolutionary and computational biology, genomics, neuroscience, and medicine.`,
-        "My research experience spans three distinct projects: comparative genomics and evolution, single-cell genomics, and codon usage and codon bias and etc. I am interested in using computation to answer biological questions while keeping the underlying biology in view.",
-      ],
-    },
-    {
-      heading: "Discovery, with a human purpose.",
-      paragraphs: [
-        "My long-term goal is to become a physician-scientist. I have a particular intellectual interest in the intersection of neurology and psychiatry, including neuropsychiatry, where questions about the nervous system meet questions about the mind and human experience.",
-        "Alongside biology and technology, I am interested in the history and philosophy of science: how observations become evidence, how explanations develop, and how our ways of asking questions change. These are interests and directions for learning, rather than clinical qualifications.",
-      ],
-    },
-  ],
+  {
+    "heading": "I. The Study of Life",
+    "paragraphs": [
+      `My foundation in biology at the ${university} has shaped how I approach living systems: through their evolutionary histories, the information encoded in genomes, and the diversity of cells that make up tissues.`,
+      "My research experience connects molecular evolution, comparative genomics, phylogenetics, and gene-family analysis with single-cell and single-nucleus transcriptomics. Comparing sequences helps me ask how biological systems have changed; examining gene expression helps me ask how cells differ within those systems."
+    ]
+  },
+  {
+    "heading": "II. Computation as an Instrument of Discovery",
+    "paragraphs": [
+      "I use Python, R, and bioinformatics workflows to turn biological questions into analyses that can be inspected and repeated. Genomic data analysis requires more than running software: it involves choosing comparisons, checking assumptions, and deciding what the data can support.",
+      "Scientific computing and high-performance computing make larger analyses practical. I am interested in reproducible workflows that record preprocessing, parameters, and computational environments so that an interpretation can be traced back to its evidence."
+    ]
+  },
+  {
+    "heading": "III. Discovery, With a Human Purpose",
+    "paragraphs": [
+      "My long-term goal is to become a physician-scientist. Neuroscience, neurology, psychiatry, and neuropsychiatry interest me because they connect biological mechanisms with cognition, behavior, and human experience. These are directions for future learning, not clinical qualifications I hold.",
+      "I hope to connect fundamental research with questions in medicine and translational research. The history and philosophy of science also inform this ambition: how evidence is interpreted matters as much as the tools used to collect it."
+    ]
+  }
+],
 };
 export const navigation = [
   ["Home", "/"],

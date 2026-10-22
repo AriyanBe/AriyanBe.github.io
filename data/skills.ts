@@ -1,76 +1,89 @@
 export const skills = [
   {
-    number: "I",
-    title: "Computational Biology",
-    description:
-      "Tools for exploring sequences, cells, and evolutionary relationships.",
-    items: [
+    "number": "I",
+    "title": "Programming & Development",
+    "description": "Programming languages and development tools",
+    "items": [
+      "Python",
       "R",
-      "BLAST & BLAST+",
-      "Seurat",
-      "Harmony",
-      "Clustering",
-      "PCA",
-      "UMAP",
-      "Quality control",
+      "Bash",
+      "Git",
+      "GitHub",
+      "HTML / CSS",
+      "JavaScript / TypeScript",
+      "React / Next.js"
+    ]
+  },
+  {
+    "number": "II",
+    "title": "Comparative & Evolutionary Genomics",
+    "description": "Software used in comparative and evolutionary workflows",
+    "items": [
       "OrthoFinder",
-      "OrthoMCL",
       "MAFFT",
       "MUSCLE",
       "IQ-TREE",
       "PAML / codeml",
-      "10X Genomics",
       "ParaAT",
-      "Biopython",
-      "UGENE",
-      "Pandas",
-    ],
+      "CAFE5",
+      "BLAST+"
+    ]
   },
   {
-    number: "II",
-    title: "Programming & Computing",
-    description: "The languages and environments behind reproducible work.",
-    items: [
-      "Python",
-      "HTML",
-      "CSS",
-      "R",
-      "Bash",
-      "Linux",
-      "Git",
-      "GitHub",
-      "SLURM",
-      "HPC",
-      "SQL",
-    ],
-  },
-  {
-    number: "III",
-    title: "Research",
-    description: "Approaches for turning biological questions into analyses.",
-    items: [
-      "Single-cell analysis",
-      "scRNA-seq / snRNA-seq",
+    "number": "III",
+    "title": "Single-Cell Bioinformatics",
+    "description": "Software and analytical methods for transcriptomic data",
+    "items": [
+      "Seurat",
+      "Harmony",
+      "Quality control and normalization",
+      "PCA / UMAP",
+      "Cell clustering",
       "Cell-type annotation",
       "Marker-gene analysis",
-      "Gene-expression analysis",
-      "Codon usage",
-      "Codon usage bias",
-      "Synonymous codon analysis",
-      "Molecular evolution",
-      "Orthology and gene-family analysis",
-      "dN/dS analysis",
-      "Comparative genomics",
-      "Phylogenetics",
-      "Sequence analysis",
-      "Scientific literature analysis",
-      "Data visualization",
-    ],
+      "Differential expression"
+    ]
   },
   {
-    number: "IV",
-    title: "Development",
-    description: "Building and maintaining tools for science and education.",
-    items: ["React / Next.js", "Supabase", "Vercel", "GitHub workflows"],
+    "number": "IV",
+    "title": "RNA Sequencing",
+    "description": "Tools for RNA-seq quality control, alignment, counting, and analysis",
+    "items": [
+      "FastQC",
+      "fastp",
+      "MultiQC",
+      "STAR",
+      "HTSeq",
+      "DESeq2",
+      "Samtools"
+    ]
   },
+  {
+    "number": "V",
+    "title": "Scientific Computing",
+    "description": "Computational environments and reproducible workflows",
+    "items": [
+      "Linux",
+      "SLURM",
+      "High-performance computing",
+      "Conda",
+      "Reproducible workflow development"
+    ]
+  },
+  {
+    "number": "VI",
+    "title": "Data Analysis & Statistics",
+    "description": "Libraries and statistical methods",
+    "items": [
+      "Pandas",
+      "Biopython",
+      "Data preprocessing",
+      "Chi-square goodness-of-fit tests",
+      "Standardized residual analysis",
+      "RSCU",
+      "ENC–GC3 analysis",
+      "Scientific visualization",
+      "Gene-expression analysis"
+    ]
+  }
 ];

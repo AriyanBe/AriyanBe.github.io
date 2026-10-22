@@ -13,9 +13,23 @@ function walk(dir) {
 }
 const files = walk(root).filter((file) => file.endsWith(".html"));
 const failures = [];
+const hiddenAssets = ["2.0.png", "3.png", "Img 1.png", "Screenshot 2026-09-07 213431.png", "images.jpg"];
+for (const name of hiddenAssets) {
+  assert(!fs.existsSync(path.join(root, "images/Research", name)), `Unapproved asset exported: ${name}`);
+}
+assert(!fs.existsSync(path.join(root, "projects/signrounds")), "Removed project route exported");
+assert(fs.existsSync(path.join(root, "projects/pubmd/index.html")), "Missing PubMD route");
+const draftSlugs = fs.readdirSync("content/notes").filter(name => {
+  return /^draft: true$/m.test(fs.readFileSync(path.join("content/notes", name), "utf8"));
+}).map(name => name.replace(/\.mdx?$/, ""));
+for (const slug of draftSlugs) assert(!fs.existsSync(path.join(root, "notes", slug)), `Draft exported: ${slug}`);
 for (const file of files) {
   const html = fs.readFileSync(file, "utf8");
   const label = path.relative(root, file);
+  if (/signrounds|PRIAVET|Priavet|\bPRIVATE\b/i.test(html)) failures.push(`${label}: stale or private placeholder`);
+  for (const match of html.matchAll(/href="#([^"]+)"/g)) {
+    if (!html.includes(`id="${match[1]}"`)) failures.push(`${label}: broken section link #${match[1]}`);
+  }
   if (!/<title>[^<]+<\/title>/.test(html))
     failures.push(`${label}: missing title`);
   if (!/<main\b[^>]*id="main"/.test(html))

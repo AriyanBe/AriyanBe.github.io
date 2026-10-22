@@ -2048,3 +2048,11 @@ h4 {
   outline: 2px solid var(--antique-gold);
   outline-offset: 4px;
 }
+
+/* Content additions use the existing editorial palette and spacing. */
+.hero-disciplines .discipline-name { color: inherit; }
+.featured-output { border-top: 1px solid var(--line); }
+.featured-output article { max-width: 780px; }
+.featured-output h3 { font-size: clamp(24px, 3vw, 34px); }
+.figure-grid img { display: block; width: 100%; height: auto; }
+.dossier-aside, .dossier-body { min-width: 0; }

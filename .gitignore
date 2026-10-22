@@ -7,3 +7,4 @@ out/
 !.env.example
 .qa/
 .openai/
+.private-review/

@@ -1,53 +1,70 @@
 import { profile } from "./profile";
 export const projects = [
   {
-    slug: "signrounds",
-    title: "SignRounds",
-    subtitle: "Medical language. Human connection.",
-    tags: ["MEDICINE", "EDUCATION", "SOFTWARE"],
-    description: `Founded by ${profile.name}, SignRounds focuses on making medical American Sign Language education accessible to healthcare professionals.`,
-    motivation:
-      "Communication is part of care. SignRounds is focused on access to medical ASL education for healthcare professionals.",
-    scope:
-      "The project focuses on medical American Sign Language education. The official website provides information about SignRounds.",
-    technology: [] as string[],
-    status: "",
-    github: "",
-    website: "https://signrounds.com/",
-    screenshots: [] as string[],
+    "slug": "science-lens",
+    "title": "Science Lens",
+    "subtitle": "Read closely. Think independently.",
+    "tags": [
+      "RESEARCH",
+      "SOFTWARE",
+      "EDUCATION"
+    ],
+    "description": "A Zotero extension for looking up unfamiliar scientific terms while reading, designed to support deliberate reading and independent reasoning.",
+    "motivation": "A short explanation can help a reader return to a difficult paper. Science Lens keeps that assistance limited: it supports understanding terminology without substituting for reading, checking sources, or reasoning through the paper.",
+    "scope": "The current implementation retrieves English Wikipedia summaries for selected terms in the Zotero PDF reader, with links to source articles and alternative matches. It does not generate AI answers or analyze the surrounding paper. Only the requested term is sent for lookup; the PDF and library are not uploaded. Updates are manual.",
+    "technology": [
+      "JavaScript",
+      "Zotero extension",
+      "Wikipedia API",
+      "Python packaging"
+    ],
+    "status": "Version 1.0.2 released; documented compatibility with Zotero 10.0.x",
+    "github": `${profile.github}/Science-Lense`,
+    "website": "",
+    "screenshots": []
   },
   {
-    slug: "science-lens",
-    title: "Science Lens",
-    subtitle: "Read closely. Think independently.",
-    tags: ["RESEARCH", "SOFTWARE", "EDUCATION"],
-    description:
-      "A scientific reading tool designed as a Zotero extension to support deliberate reading and critical thinking, with intentionally minimal AI intervention.",
-    motivation:
-      "Science Lens is designed to help readers understand scientific terminology and concepts without replacing the work of reading and reasoning through scientific literature themselves.",
-    scope:
-      "Its philosophy centers on independent reasoning and deliberate engagement with scientific papers. The repository documents the implementation; this description does not imply additional features or outcomes.",
-    technology: ["Zotero extension"],
-    status: "",
-    github: `${profile.github}/Science-Lense`,
-    website: "",
-    screenshots: [] as string[],
+    "slug": "computational-biology",
+    "title": "Computational Biology Work",
+    "subtitle": "Methods that can be inspected and repeated.",
+    "tags": [
+      "BIOLOGY",
+      "GENOMICS",
+      "RESEARCH",
+      "SOFTWARE"
+    ],
+    "description": "Bioinformatics scripts and analysis workflows for sequence data, codon usage, and comparative biological questions.",
+    "motivation": "Reproducibility makes a computational claim open to inspection. Recording inputs, filtering choices, parameters, and environments allows an analysis to be revisited and its assumptions tested.",
+    "scope": "The public Codon-Bias repository provides Python and R scripts for genome acquisition, coding-sequence extraction, RSCU, chi-square tests, residuals, and ENC–GC3 analysis. Broader comparative-genomics, phylogenomics, RNA-seq, and HPC workflows are areas of work; they are not presented as a released public toolkit.",
+    "technology": [
+      "Python",
+      "R",
+      "Biopython",
+      "tidyverse",
+      "seqinr",
+      "ggplot2"
+    ],
+    "status": "Public codon-analysis scripts; broader workflows documented as available",
+    "github": `${profile.github}/Codon-Bias`,
+    "website": "",
+    "screenshots": []
   },
   {
-    slug: "computational-biology",
-    title: "Computational Biology Work",
-    subtitle: "Small tools for complex questions.",
-    tags: ["BIOLOGY", "GENOMICS", "RESEARCH", "SOFTWARE"],
-    description:
-      "A home for bioinformatics pipelines, analysis scripts, HPC workflows, and smaller computational research projects.",
-    motivation:
-      "Reproducible computation makes it possible to return to a biological question, examine assumptions, and build on an analysis.",
-    scope:
-      "Individual pipelines and analyses can be documented with their biological questions, inputs, methods, and reproducibility notes. The GitHub link leads to my profile, not to a specific project repository.",
-    technology: [] as string[],
-    status: "",
-    github: profile.github,
-    website: "",
-    screenshots: [] as string[],
-  },
+    "slug": "pubmd",
+    "title": "PubMD — Scientific Literature Discovery",
+    "subtitle": "A reading-oriented approach to finding research.",
+    "tags": [
+      "LITERATURE",
+      "SOFTWARE",
+      "CONCEPT"
+    ],
+    "description": "A concept for an open-source scientific literature discovery platform using PubMed/NCBI metadata, with separate discovery and research experiences.",
+    "motivation": "I want to explore how the reading experience of Apple News, the scientific information architecture of PubMed, and academic literature-management tools could inform a more approachable way to find and organize papers.",
+    "scope": "Planned Discover Mode would offer topic-based feeds, personalized discovery, accessible explanations, and research highlights. Planned Research Mode would support advanced and Boolean searching, MeSH terms, publication metadata, research filters, citation workflows, and literature organization. These are proposed capabilities; the platform is not operational.",
+    "technology": [],
+    "status": "Concept / Planning",
+    "github": "",
+    "website": "",
+    "screenshots": []
+  }
 ];

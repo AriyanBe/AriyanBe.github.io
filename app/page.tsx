@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ResearchOutput } from "@/components/research-output";
 import Image from "next/image";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
@@ -25,8 +26,7 @@ export default function Home() {
             <span className="title-period">.</span>
           </h1>
           <p className="hero-disciplines">
-            GENETICS <span>·</span> EVOLUTION <span>·</span>BIOINFORMATICS{" "}
-            <span>·</span> MEDICINE
+            {profile.disciplines.map((discipline, i) => <span key={discipline} className="discipline-name">{i > 0 && <span aria-hidden="true"> · </span>}{discipline}</span>)}
           </p>
           <p className="hero-intro">{profile.introduction}</p>
           <div className="hero-actions">
@@ -77,6 +77,10 @@ export default function Home() {
             <ResearchCard item={item} index={index} key={item.slug} />
           ))}
         </div>
+      </section>
+      <section className="wrap section featured-output">
+        <div className="section-heading"><h2>From the research notebook</h2></div>
+        <ResearchOutput />
       </section>
       <section className="statement">
         <div className="wrap statement-inner">

@@ -2,9 +2,10 @@ import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { PageIntro } from "@/components/page-intro";
 import { ResearchIllustration } from "@/components/research-illustration";
+import { ScientificText } from "@/components/scientific-text";
 import { Tags } from "@/components/tags";
-import { research, researchIntro } from "@/data/research";
-export const metadata = pageMetadata("Research", researchIntro, "/research/");
+import { research, researchIntro, researchDescription } from "@/data/research";
+export const metadata = pageMetadata("Research", researchDescription, "/research/");
 export default function Research() {
   return (
     <div className="wrap page-shell">
@@ -26,7 +27,7 @@ export default function Research() {
               <h2>
                 <Link href={`/research/${item.slug}/`}>{item.title}</Link>
               </h2>
-              <p>{item.summary}</p>
+              <p><ScientificText>{item.summary}</ScientificText></p>
               <Tags items={item.topics.slice(0, 4)} />
               <p className="status-label">{item.status}</p>
             </div>
@@ -37,9 +38,7 @@ export default function Research() {
         ))}
       </div>
       <p className="editorial-note">
-        These dossiers describe research experiences. Other research projects are private, for more information contact me. Methods
-        and interests are distinguished from verified findings; no unreported
-        scientific conclusions are implied.
+        Each dossier distinguishes completed work, ongoing analysis, and prospective methods. Public research outputs are linked where available; unpublished findings remain withheld.
       </p>
     </div>
   );

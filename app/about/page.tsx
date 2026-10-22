@@ -2,6 +2,7 @@ import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { PageIntro } from "@/components/page-intro";
+import { ScientificText } from "@/components/scientific-text";
 import { timeline } from "@/data/timeline";
 import { profile } from "@/data/profile";
 export const metadata = pageMetadata(
@@ -47,7 +48,7 @@ export default function About() {
             )}
           </div>
           <p className="caption">
-            {profile.name.toUpperCase()} · UNDERGRADUATE STUDENT RESEARCHER
+            {profile.name.toUpperCase()} · {profile.role}
           </p>
         </aside>
       </div>
@@ -63,7 +64,8 @@ export default function About() {
             <div key={item.label}>
               <span className="eyebrow">{item.label}</span>
               <h3>{item.title}</h3>
-              <p>{item.detail}</p>
+              <p><ScientificText>{item.detail}</ScientificText></p>
+              {item.href && <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">View research output ↗</a>}
             </div>
           ))}
         </div>

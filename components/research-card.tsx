@@ -1,3 +1,4 @@
+import { ScientificText } from "./scientific-text";
 import Link from "next/link";
 import { ResearchIllustration } from "./research-illustration";
 import type { ResearchEntry } from "@/data/research";
@@ -15,7 +16,7 @@ export function ResearchCard({
       </span>
       <ResearchIllustration kind={item.icon} />
       <h3>{item.title}</h3>
-      <p>{item.summary}</p>
+      <p><ScientificText>{item.summary}</ScientificText></p>
       <div className="card-foot">
         <span>Research overview</span>
         <span>↗</span>

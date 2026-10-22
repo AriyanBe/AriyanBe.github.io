@@ -6,7 +6,7 @@ import { Tags } from "@/components/tags";
 import { projects } from "@/data/projects";
 export const metadata = pageMetadata(
   "Projects",
-  `SignRounds, Science Lens, and computational biology tools by ${profile.name}.`,
+  `Science Lens, computational biology workflows, and the PubMD concept by ${profile.name}.`,
   "/projects/",
 );
 export default function Projects() {
@@ -16,7 +16,7 @@ export default function Projects() {
         number="III"
         label="THE INVENTOR’S CABINET"
         title="Ideas, put to work."
-        description="Tools for medical education, deliberate scientific reading, and reproducible biological inquiry. For more information and access to other projects, contact me."
+        description="Tools for deliberate scientific reading and reproducible biological inquiry, alongside ideas in development."
       />
       <div className="project-catalogue">
         {projects.map((p, i) => (

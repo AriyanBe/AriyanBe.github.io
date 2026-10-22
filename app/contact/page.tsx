@@ -19,8 +19,8 @@ export default function Contact() {
         <span className="eyebrow">TO {profile.name.toUpperCase()}</span>
         <h2>Let’s compare notes.</h2>
         <p>
-          I’m interested in conversations across biology, computation,
-          neuroscience, and medicine.
+          I welcome academic collaboration, bioinformatics and computational
+          research opportunities, and scientific discussion across biology and medicine.
         </p>
         {profile.email && (
           <div className="contact-method">

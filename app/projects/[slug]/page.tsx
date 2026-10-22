@@ -81,32 +81,10 @@ export default async function Project({
             <h2>Scope & direction</h2>
             <p>{item.scope}</p>
           </section>
-          <section>
+          {item.screenshots.length > 0 && <section>
             <h2>Inside the project</h2>
-            {item.screenshots.length ? (
-              item.screenshots.map((src, i) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`${item.title} screenshot ${i + 1}`}
-                  width={1200}
-                  height={800}
-                />
-              ))
-            ) : (
-              <figure className="figure-placeholder">
-                <span>PROJECT DOCUMENTATION</span>
-                <strong>
-                  {slug === "computational-biology"
-                    ? "Pipelines & repository catalogue"
-                    : "Screenshots & walkthrough"}
-                </strong>
-                <figcaption>
-                  Documentation will be added as it becomes available.
-                </figcaption>
-              </figure>
-            )}
-          </section>
+            {item.screenshots.map((src, i) => <Image key={src} src={src} alt={`${item.title} screenshot ${i + 1}`} width={1200} height={800} />)}
+          </section>}
           {item.status && (
             <section>
               <h2>Development status</h2>
