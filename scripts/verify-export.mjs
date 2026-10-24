@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
+import matter from "gray-matter";
 const root = path.resolve("out");
 function walk(dir) {
   return fs
@@ -19,10 +20,36 @@ for (const name of hiddenAssets) {
 }
 assert(!fs.existsSync(path.join(root, "projects/signrounds")), "Removed project route exported");
 assert(fs.existsSync(path.join(root, "projects/pubmd/index.html")), "Missing PubMD route");
-const draftSlugs = fs.readdirSync("content/notes").filter(name => {
-  return /^draft: true$/m.test(fs.readFileSync(path.join("content/notes", name), "utf8"));
-}).map(name => name.replace(/\.mdx?$/, ""));
-for (const slug of draftSlugs) assert(!fs.existsSync(path.join(root, "notes", slug)), `Draft exported: ${slug}`);
+const entries = fs.readdirSync("content/notes").filter(name => /\.mdx?$/.test(name)).map(name => {
+  const { data, content } = matter(fs.readFileSync(path.join("content/notes", name), "utf8"));
+  return { ...data, content, slug: name.replace(/\.mdx?$/, "") };
+});
+const listing = fs.readFileSync(path.join(root, "reflections/index.html"), "utf8");
+assert(listing.includes("Reflections."), "Missing Reflections heading");
+assert(listing.includes("/reflections/the-first-page/"), "Missing preface link");
+for (const entry of entries) {
+  if (entry.draft !== false) {
+    for (const route of ["notes", "reflections"]) {
+      assert(!fs.existsSync(path.join(root, route, entry.slug)), `Draft exported: ${route}/${entry.slug}`);
+    }
+    // Include React payloads and JS, not just public HTML, in the privacy check.
+    for (const file of walk(root).filter(file => /\.(html|txt|json|js|xml)$/.test(file))) {
+      assert(!fs.readFileSync(file, "utf8").includes(entry.slug), `Draft leaked into ${path.relative(root, file)}: ${entry.slug}`);
+    }
+    continue;
+  }
+  const route = `/reflections/${entry.slug}/`;
+  const html = fs.readFileSync(path.join(root, route, "index.html"), "utf8");
+  const escapedCategory = String(entry.category).replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;");
+  assert(listing.includes(escapedCategory) && html.includes(escapedCategory), `Category missing: ${entry.slug}`);
+  assert(html.includes(`property="article:section" content="${escapedCategory}"`), "Missing category metadata");
+  assert(html.includes(`rel="canonical" href="https://ariyanbehrouz.me${route}"`), "Incorrect canonical URL");
+  const wordCount = entry.content.trim().split(/\s+/).filter(Boolean).length;
+  assert.equal(html.includes(" min read"), wordCount >= 220, `Incorrect reading time visibility: ${entry.slug}`);
+  const legacy = fs.readFileSync(path.join(root, "notes", entry.slug, "index.html"), "utf8");
+  assert(legacy.includes(`content="0;url=${route}"`) && legacy.includes('content="noindex, follow"'), "Missing static legacy redirect");
+}
+assert(fs.readFileSync(path.join(root, "notes/index.html"), "utf8").includes('content="0;url=/reflections/"'), "Missing collection redirect");
 for (const file of files) {
   const html = fs.readFileSync(file, "utf8");
   const label = path.relative(root, file);
@@ -50,6 +77,8 @@ for (const file of files) {
   }
 }
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+assert(sitemap.includes("/reflections/the-first-page/") && !sitemap.includes("/notes/"), "Sitemap must use Reflections URLs only");
+assert(fs.readFileSync(path.join(root, "about/index.html"), "utf8").includes("On the Making of This Website"), "Missing website acknowledgment");
 assert(
   sitemap.includes("/research/comparative-genomics/"),
   "Sitemap must include research routes",

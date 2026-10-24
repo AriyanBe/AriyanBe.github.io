@@ -70,6 +70,18 @@ export default function About() {
           ))}
         </div>
       </section>
+      <section className="website-colophon">
+        <h2>On the Making of This Website</h2>
+        <p>
+          This website was conceived and directed by me, with the substantial
+          majority of its code and implementation developed with the assistance
+          of OpenAI Codex. Its content, research, and personal reflections remain
+          my own.
+        </p>
+        <a className="text-link" href="https://github.com/AriyanBe/AriyanBe.github.io">
+          View source on GitHub ↗
+        </a>
+      </section>
     </div>
   );
 }

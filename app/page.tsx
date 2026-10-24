@@ -126,13 +126,13 @@ export default function Home() {
           <span className="journal-symbol" aria-hidden="true">
             ❧
           </span>
-          <h2>Field Notes</h2>
+          <h2>Reflections</h2>
           <p>
-            A place for observations, questions, and ideas at the edges of
-            biology, medicine, and the history of science.
+            A collection of thoughts on life, science, philosophy, literature,
+            and the questions that remain.
           </p>
-          <Link className="text-link" href="/notes/">
-            Turn to the notebook <span>→</span>
+          <Link className="text-link" href="/reflections/">
+            Enter the commonplace book <span>→</span>
           </Link>
         </div>
       </section>

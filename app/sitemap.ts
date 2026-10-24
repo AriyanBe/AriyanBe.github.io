@@ -11,6 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...navigation.map(([, href]) => href),
     ...research.map((r) => `/research/${r.slug}/`),
     ...projects.map((p) => `/projects/${p.slug}/`),
-    ...getNotes().map((n) => `/notes/${n.slug}/`),
+    ...getNotes().map((n) => `/reflections/${n.slug}/`),
   ].map((route) => ({ url: new URL(route, profile.siteUrl).toString() }));
 }

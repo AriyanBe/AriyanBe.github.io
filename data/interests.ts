@@ -45,7 +45,7 @@ export const interests = [
     "title": "History & Philosophy of Science",
     "symbol": "07",
     "description": "How do observations become evidence, and how do scientific explanations change? Historical and philosophical inquiry helps me reflect on the assumptions behind contemporary research.",
-    "href": "/notes/",
+    "href": "/reflections/",
     "link": "The commonplace book"
   },
   {

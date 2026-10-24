@@ -8,7 +8,7 @@
     "start": "node scripts/preview.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "verify": "node scripts/verify-mdx.mjs && node scripts/verify-export.mjs"
+    "verify": "node scripts/verify-reflections.mjs && node scripts/verify-mdx.mjs && node scripts/verify-export.mjs"
   },
   "engines": {
     "node": ">=22.13.0"

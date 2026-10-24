@@ -10,7 +10,15 @@ The palette, typography, scientific plate, portrait, and component layout are pr
 - `data/skills.ts`: six categories separating languages, software, methods, and environments. Add only tools actually used; prospective methods belong in the relevant dossier instead.
 - `data/interests.ts`: eight consolidated interest cards and five interactive branches, including regenerative medicine within translational interests.
 - `app/cv/page.tsx`: intentionally email-only, per the latest instruction. No PDF or detailed CV is published.
-- `content/notes/`: the introductory note and six unpublished outlines. Keep `draft: true` until the author has written and reviewed the article. Draft dates are planning dates, not publication claims.
+- `content/notes/`: Markdown/MDX sources for Reflections, including the published preface and six unpublished outlines. Public URLs use `/reflections/[slug]/`; the source directory is retained. Keep `draft: true` until the author has written and reviewed the entry. Draft dates are planning dates, not publication claims.
+
+## Publishing Reflections
+
+Create a `.md` or `.mdx` file in `content/notes/`. Its filename is its permanent slug. Use quoted `title` and `date` (`YYYY-MM-DD`), a free-form `category`, optional `description`, `draft: true`, and `references: []` (or title/url reference objects). Categories can be Aphorism, Thought, Essay, Meditation, Literary Note, Scientific Reflection, Preface, or any other text; no code change is required. Change `draft` to `false` only when ready to publish. Only an explicit boolean `draft: false` publishes an entry; missing or malformed values remain private. Drafts are excluded from listings, both sets of static routes, and the sitemap.
+
+Entries under 220 words omit reading time; longer entries use 220 words per minute. The listing remains newest first, with a persistent link above it to `the-first-page` when published. Keep original dates and filenames when revising entries. Markdown/MDX and frontmatter remain the portable archive.
+
+Old `/notes/` URLs export HTML refresh redirects with fallback links, canonical Reflections URLs, and `noindex`. GitHub Pages cannot issue server-side HTTP redirects. Only published entries receive legacy redirects.
 
 ## Figures and privacy
 

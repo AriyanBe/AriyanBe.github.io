@@ -16,7 +16,7 @@ export const profile = {
   github: "https://github.com/AriyanBe",
   siteUrl:
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://ariyanbe.github.io",
+    "https://ariyanbehrouz.me",
   portrait: "/images/portrait/ariyan-behrouz.jpg",
   portraitWidth: 1122,
   portraitHeight: 1402,
@@ -53,7 +53,7 @@ export const navigation = [
   ["Projects", "/projects/"],
   ["Skills", "/skills/"],
   ["Interests", "/interests/"],
-  ["Field Notes", "/notes/"],
+  ["Reflections", "/reflections/"],
   ["CV", "/cv/"],
   ["Contact", "/contact/"],
 ] as const;

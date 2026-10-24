@@ -1281,6 +1281,25 @@ h1 {
 .notes-list {
   border-top: 1px solid var(--line);
 }
+.reflection-preface {
+  margin-bottom: 40px;
+}
+.website-colophon {
+  max-width: 680px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+.website-colophon h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.website-colophon .text-link {
+  display: inline-block;
+  margin-top: 16px;
+}
 .note-entry {
   display: grid;
   grid-template-columns: 170px 1fr auto;

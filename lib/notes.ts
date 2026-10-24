@@ -7,7 +7,7 @@ export type Note = {
   date: string;
   category: string;
   description: string;
-  readingTime: number;
+  readingTime: number | null;
   content: string;
   draft: boolean;
   references: { title: string; url: string }[];
@@ -29,15 +29,17 @@ export function getNotes(includeDrafts = false): Note[] {
         Number.isNaN(Date.parse(data.date))
       )
         throw new Error(`Invalid title or date in ${file}`);
+      const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
       return {
         slug: file.replace(/\.mdx?$/, ""),
         title: data.title,
         date: data.date,
-        category: String(data.category || "Field Notes"),
+        category: String(data.category || "Reflection"),
         description: String(data.description || ""),
-        readingTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 220)),
+        readingTime: wordCount < 220 ? null : Math.ceil(wordCount / 220),
         content,
-        draft: data.draft === true,
+        // Publication is explicit; omitted or malformed draft values stay private.
+        draft: data.draft !== false,
         references: Array.isArray(data.references) ? data.references : [],
       };
     })
