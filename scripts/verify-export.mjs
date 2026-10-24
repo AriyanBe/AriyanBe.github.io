@@ -27,6 +27,9 @@ const entries = fs.readdirSync("content/notes").filter(name => /\.mdx?$/.test(na
 const listing = fs.readFileSync(path.join(root, "reflections/index.html"), "utf8");
 assert(listing.includes("Reflections."), "Missing Reflections heading");
 assert(listing.includes("/reflections/the-first-page/"), "Missing preface link");
+assert(listing.includes("Begin with the preface"), "Missing persistent preface label");
+assert(!/<h2[^>]*><a[^>]*href="\/reflections\/the-first-page\//.test(listing), "Preface duplicated in ordinary list");
+const chronological = entries.filter(entry => entry.draft === false).sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
 for (const entry of entries) {
   if (entry.draft !== false) {
     for (const route of ["notes", "reflections"]) {
@@ -41,7 +44,21 @@ for (const entry of entries) {
   const route = `/reflections/${entry.slug}/`;
   const html = fs.readFileSync(path.join(root, route, "index.html"), "utf8");
   const escapedCategory = String(entry.category).replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;");
-  assert(listing.includes(escapedCategory) && html.includes(escapedCategory), `Category missing: ${entry.slug}`);
+  assert((entry.slug === "the-first-page" || listing.includes(escapedCategory)) && html.includes(escapedCategory), `Category missing: ${entry.slug}`);
+  if (entry.slug !== "the-first-page") assert(listing.includes(`href="${route}"`), `Entry link missing from static listing: ${entry.slug}`);
+  if (entry.author) {
+    assert(listing.includes(entry.author) && html.includes(entry.author), `Missing author: ${entry.slug}`);
+    assert(html.includes(`name="author" content="${entry.author}"`), "Missing author metadata");
+  }
+  for (const reference of entry.references ?? []) {
+    const escapedUrl = reference.url.replaceAll("&", "&amp;");
+    assert(html.includes(`href="${escapedUrl}" target="_blank" rel="noopener noreferrer"`), `Missing secure reference link: ${entry.slug}`);
+  }
+  const index = chronological.findIndex(item => item.slug === entry.slug);
+  for (const [rel, neighbor] of [["prev", chronological[index - 1]], ["next", chronological[index + 1]]]) {
+    if (neighbor) assert([...html.matchAll(/<a\b[^>]*>/g)].some(([tag]) => tag.includes(`href="/reflections/${neighbor.slug}/"`) && tag.includes(`rel="${rel}"`)), `Incorrect ${rel} navigation: ${entry.slug}`);
+    else assert(!html.includes(`rel="${rel}"`), `Unexpected ${rel} navigation: ${entry.slug}`);
+  }
   assert(html.includes(`property="article:section" content="${escapedCategory}"`), "Missing category metadata");
   assert(html.includes(`rel="canonical" href="https://ariyanbehrouz.me${route}"`), "Incorrect canonical URL");
   const wordCount = entry.content.trim().split(/\s+/).filter(Boolean).length;

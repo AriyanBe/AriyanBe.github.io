@@ -6,6 +6,7 @@ export type Note = {
   title: string;
   date: string;
   category: string;
+  author?: string;
   description: string;
   readingTime: number | null;
   content: string;
@@ -35,6 +36,7 @@ export function getNotes(includeDrafts = false): Note[] {
         title: data.title,
         date: data.date,
         category: String(data.category || "Reflection"),
+        author: typeof data.author === "string" && data.author.trim() ? data.author.trim() : undefined,
         description: String(data.description || ""),
         readingTime: wordCount < 220 ? null : Math.ceil(wordCount / 220),
         content,
@@ -44,7 +46,7 @@ export function getNotes(includeDrafts = false): Note[] {
       };
     })
     .filter((note) => includeDrafts || !note.draft)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 }
 export function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-US", {

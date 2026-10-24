@@ -17,6 +17,7 @@ fixture("threshold", "draft: false", 220);
 fixture("draft", "draft: true", 1);
 fixture("unspecified", "", 1);
 fixture("malformed", 'draft: "false"', 1);
+fixtures.set("short.mdx", fixtures.get("short.mdx").replace('category: "Aphorism"', 'category: "Aphorism"\nauthor: "External Author"'));
 const source = ts.transpileModule(fs.readFileSync("lib/notes.ts", "utf8"), {
   compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true },
 }).outputText;
@@ -40,4 +41,36 @@ for (const slug of ["short", "below-threshold"]) {
 assert.equal(published.find(entry => entry.slug === "threshold").readingTime, 1);
 assert.equal(published.find(entry => entry.slug === "essay").readingTime, 2);
 assert.equal(published.find(entry => entry.slug === "below-threshold").category, "Custom category");
-console.log("Reflections verified: explicit publication, arbitrary categories, and short/long reading time.");
+assert.equal(published.find(entry => entry.slug === "short").author, "External Author");
+assert.equal(published.find(entry => entry.slug === "essay").author, undefined);
+
+const archive = {};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync("lib/reflections.ts", "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText, { exports: archive, URLSearchParams });
+const entries = [
+  { slug: "z", date: "2026-01-01", category: "Poetry" },
+  { slug: "b", date: "2026-10-24", category: "Poetry" },
+  { slug: "a", date: "2026-10-24", category: "Aphorism" },
+  { slug: "c", date: "2026-10-24", category: "A previously unknown category" },
+];
+const slugs = list => Array.from(list, entry => entry.slug);
+assert.deepEqual(slugs(archive.selectReflections(entries, { category: null, sort: "newest" })), ["a", "b", "c", "z"]);
+assert.deepEqual(slugs(archive.selectReflections(entries, { category: null, sort: "oldest" })), ["z", "a", "b", "c"]);
+const selection = archive.readArchiveSelection("?category=Poetry&sort=oldest", ["Poetry"]);
+assert.deepEqual(slugs(archive.selectReflections(entries, selection)), ["z", "b"]);
+assert.equal(archive.readArchiveSelection("?category=Missing&sort=invalid", ["Poetry"]).category, null);
+assert.equal(archive.readArchiveSelection("?sort=invalid", []).sort, "newest");
+assert.equal(archive.readArchiveSelection("?category=Literary+Note", ["Literary Note"]).category, "Literary Note");
+assert.equal(archive.getCategories(entries).find(category => category.value === "Poetry").count, 2);
+assert(archive.getCategories(entries).some(category => category.value === "A previously unknown category"));
+assert.equal(archive.categoryLabel("Aphorism"), "Aphorisms");
+assert.equal(archive.categoryLabel("Poetry"), "Poetry");
+assert.equal(archive.categoryLabel("constructor"), "constructor");
+assert.equal(archive.selectReflections([], { category: "Poetry", sort: "oldest" }).length, 0);
+assert.equal(archive.reflectionNeighbors(entries, "z").previous, undefined);
+assert.equal(archive.reflectionNeighbors(entries, "c").next, undefined);
+assert.equal(archive.reflectionNeighbors(entries, "b").previous.slug, "a");
+assert.equal(archive.reflectionNeighbors(entries, "b").next.slug, "c");
+assert.deepEqual(entries.map(entry => entry.slug), ["z", "b", "a", "c"], "Selections must not mutate the collection");
+console.log("Reflections verified: publication, authors, dynamic categories, URL selection, combined sorting/filtering, chronological neighbors, and reading time.");

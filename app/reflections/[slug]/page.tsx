@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getNotes, formatDate } from "@/lib/notes";
+import { reflectionNeighbors } from "@/lib/reflections";
+import { profile } from "@/data/profile";
 export function generateStaticParams() {
   return getNotes().map(({ slug }) => ({ slug }));
 }
@@ -20,11 +22,13 @@ export async function generateMetadata({
   const metadata = pageMetadata(item.title, item.description, `/reflections/${slug}/`, true);
   return {
     ...metadata,
+    authors: [{ name: item.author || profile.name }],
     openGraph: {
       ...metadata.openGraph,
       type: "article",
       publishedTime: item.date,
       section: item.category,
+      authors: [item.author || profile.name],
     },
   };
 }
@@ -60,8 +64,10 @@ export default async function NotePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const note = getNotes().find((p) => p.slug === slug);
+  const published = getNotes();
+  const note = published.find((p) => p.slug === slug);
   if (!note) notFound();
+  const { previous, next } = reflectionNeighbors(published, slug);
   return (
     <div className="wrap page-shell">
       <Link className="back-link" href="/reflections/">
@@ -71,6 +77,7 @@ export default async function NotePage({
         <header>
           <p className="eyebrow">REFLECTIONS · {note.category}</p>
           <h1>{note.title}</h1>
+          <p className="reflection-author">By {note.author || profile.name}</p>
           <div className="note-meta">
             <time dateTime={note.date}>{formatDate(note.date)}</time>
             {note.readingTime !== null && <span>{note.readingTime} min read</span>}
@@ -88,7 +95,7 @@ export default async function NotePage({
               <ol>
                 {note.references.map((ref) => (
                   <li key={ref.url}>
-                    <a href={ref.url}>{ref.title} ↗</a>
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.title} ↗</a>
                   </li>
                 ))}
               </ol>
@@ -98,6 +105,16 @@ export default async function NotePage({
         <div className="journal-end" aria-hidden="true">
           ❧
         </div>
+        {(previous || next) && (
+          <nav className="reflection-neighbors" aria-label="Chronological reflection navigation">
+            {previous && <Link href={`/reflections/${previous.slug}/`} rel="prev">
+              <span>← Previous reflection</span><span>{previous.title}</span>
+            </Link>}
+            {next && <Link className="reflection-next" href={`/reflections/${next.slug}/`} rel="next">
+              <span>Next reflection →</span><span>{next.title}</span>
+            </Link>}
+          </nav>
+        )}
       </article>
     </div>
   );

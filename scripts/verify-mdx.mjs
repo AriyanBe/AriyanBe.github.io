@@ -31,6 +31,10 @@ assert(
   html.includes("user-content-fn-context"),
   "Footnote navigation target missing",
 );
+const poetry = await compileMDX({ source: "First line  \nSecond line\n\nNext stanza" });
+const poetryHtml = renderToStaticMarkup(poetry.content);
+assert(/<br\s*\/?\s*>/.test(poetryHtml), "Markdown hard line breaks must survive rendering");
+assert.equal((poetryHtml.match(/<p>/g) || []).length, 2, "Markdown stanzas must remain separate paragraphs");
 console.log(
   "MDX verified: Markdown headings, JSX figure, dimensions, captions, and linked footnotes.",
 );
