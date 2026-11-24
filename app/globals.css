@@ -135,6 +135,15 @@ p {
   letter-spacing: 0;
   color: var(--brass);
 }
+.monogram .monogram-dna {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  line-height: 1;
+}
+.footer-disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
 .nav {
   display: flex;
   gap: 27px;
@@ -206,8 +215,9 @@ h1 {
 .hero h1 {
   margin: 26px 0 27px;
 }
-.hero h1 em {
+.hero h1 .hero-surname {
   color: var(--parchment);
+  font-style: normal;
 }
 .title-period {
   color: var(--brass);

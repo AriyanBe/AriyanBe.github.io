@@ -25,14 +25,14 @@ export default function Contact() {
         {profile.email && (
           <div className="contact-method">
             <span>Email</span>
-            <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
           </div>
         )}
         {profile.github && (
           <div className="contact-method">
             <span>GitHub</span>
             <a href={profile.github} target="_blank" rel="noopener noreferrer">
-              {profile.github} ↗
+              {profile.github}
             </a>
           </div>
         )}

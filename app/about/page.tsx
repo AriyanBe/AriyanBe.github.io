@@ -56,7 +56,7 @@ export default function About() {
         <div className="section-heading">
           <h2>A path in progress</h2>
           <Link className="text-link" href="/cv/">
-            Curriculum vitae →
+            Curriculum vitae
           </Link>
         </div>
         <div className="timeline">
@@ -65,7 +65,7 @@ export default function About() {
               <span className="eyebrow">{item.label}</span>
               <h3>{item.title}</h3>
               <p><ScientificText>{item.detail}</ScientificText></p>
-              {item.href && <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">View research output ↗</a>}
+              {item.href && <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">View research output</a>}
             </div>
           ))}
         </div>
@@ -79,7 +79,7 @@ export default function About() {
           my own.
         </p>
         <a className="text-link" href="https://github.com/AriyanBe/AriyanBe.github.io">
-          View source on GitHub ↗
+          View source on GitHub
         </a>
       </section>
     </div>

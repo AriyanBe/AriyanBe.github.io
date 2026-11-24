@@ -22,19 +22,19 @@ export default function Home() {
           <h1>
             {profile.name.split(" ")[0]}
             <br />
-            <em>{profile.name.split(" ").slice(1).join(" ")}</em>
+            <span className="hero-surname">{profile.name.split(" ").slice(1).join(" ")}</span>
             <span className="title-period">.</span>
           </h1>
           <p className="hero-disciplines">
-            {profile.disciplines.map((discipline, i) => <span key={discipline} className="discipline-name">{i > 0 && <span aria-hidden="true"> · </span>}{discipline}</span>)}
+            {profile.disciplines.map((discipline) => <span key={discipline} className="discipline-name">{discipline}{" "}</span>)}
           </p>
           <p className="hero-intro">{profile.introduction}</p>
           <div className="hero-actions">
             <Link className="button" href="/research/">
-              Explore my research <span>↗</span>
+              Explore my research
             </Link>
             <Link className="text-link" href="/about/">
-              About me <span>→</span>
+              About me
             </Link>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function Home() {
             <h2>Lines of inquiry</h2>
           </div>
           <Link className="text-link" href="/research/">
-            All research <span>↗</span>
+            All research
           </Link>
         </div>
         <div className="research-grid">
@@ -92,7 +92,7 @@ export default function Home() {
           </h2>
           <p>{profile.goal}</p>
           <Link className="text-link" href="/about/">
-            More about my path <span>→</span>
+            More about my path
           </Link>
         </div>
       </section>
@@ -114,11 +114,10 @@ export default function Home() {
                 <small>{project.tags.slice(0, 2).join(" / ")}</small>
                 <strong>{project.title}</strong>
               </span>
-              <span>↗</span>
             </Link>
           ))}
           <Link className="text-link" href="/projects/">
-            Open the cabinet →
+            Open the cabinet
           </Link>
         </div>
         <div className="journal-teaser">
@@ -132,14 +131,14 @@ export default function Home() {
             and the questions that remain.
           </p>
           <Link className="text-link" href="/reflections/">
-            Enter the commonplace book <span>→</span>
+            Enter the commonplace book
           </Link>
         </div>
       </section>
       <section className="wrap closing-link">
         <p>Curiosity seldom stays in one discipline.</p>
         <Link href="/interests/">
-          Explore the cabinet of curiosities <span>↗</span>
+          Explore the cabinet of curiosities
         </Link>
       </section>
     </>

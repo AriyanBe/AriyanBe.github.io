@@ -7,7 +7,7 @@ export function ResearchOutput() {
       <h3><ScientificText>{codonPoster.title}</ScientificText></h3>
       <p>{codonPoster.author} · {codonPoster.institution}<br />{codonPoster.event} · <time dateTime={codonPoster.date}>{codonPoster.dateLabel}</time></p>
       <p>{codonPoster.note}</p>
-      <a className="text-link" href={codonPoster.url} target="_blank" rel="noopener noreferrer">View institutional record ↗</a>
+      <a className="text-link" href={codonPoster.url} target="_blank" rel="noopener noreferrer">View institutional record</a>
     </article>
   );
 }

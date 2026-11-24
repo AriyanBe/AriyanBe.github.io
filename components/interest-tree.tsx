@@ -43,7 +43,6 @@ export function InterestTree() {
                 aria-pressed={active === i}
               >
                 {b.name}
-                <span>↗</span>
               </button>
             ))}
           </div>
@@ -53,7 +52,7 @@ export function InterestTree() {
           <h3>{branches[active].name}</h3>
           <p>{branches[active].description}</p>
           <Link className="text-link" href={branches[active].href}>
-            {branches[active].link} →
+            {branches[active].link}
           </Link>
         </div>
       </div>

@@ -32,7 +32,7 @@ export default function Research() {
               <p className="status-label">{item.status}</p>
             </div>
             <Link className="text-link" href={`/research/${item.slug}/`}>
-              Read research dossier ↗
+              Read research dossier
             </Link>
           </article>
         ))}

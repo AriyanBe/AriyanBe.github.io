@@ -29,7 +29,7 @@ export default async function Project({
   return (
     <div className="wrap page-shell">
       <Link className="back-link" href="/projects/">
-        ← Project catalogue
+        Project catalogue
       </Link>
       <div className="page-intro">
         <Tags items={item.tags} />
@@ -54,7 +54,7 @@ export default async function Project({
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub ↗
+              GitHub
             </a>
           )}
           {item.website && (
@@ -64,7 +64,7 @@ export default async function Project({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit website ↗
+              Visit website
             </a>
           )}
         </aside>

@@ -19,7 +19,6 @@ export function ResearchCard({
       <p><ScientificText>{item.summary}</ScientificText></p>
       <div className="card-foot">
         <span>Research overview</span>
-        <span>↗</span>
       </div>
     </Link>
   );

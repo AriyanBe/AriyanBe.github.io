@@ -21,7 +21,7 @@ export default function Reflections() {
       <PageIntro number="VI" label="THE COMMONPLACE BOOK" title="Reflections." description={introduction} />
       {preface && (
         <p className="reflection-preface">
-          <Link className="text-link" href={`/reflections/${preface.slug}/`}>Begin with the preface →</Link>
+          <Link className="text-link" href={`/reflections/${preface.slug}/`}>Begin with the preface</Link>
         </p>
       )}
       <ReflectionsArchive entries={entries} />

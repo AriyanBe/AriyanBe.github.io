@@ -71,7 +71,7 @@ export default async function NotePage({
   return (
     <div className="wrap page-shell">
       <Link className="back-link" href="/reflections/">
-        ← The commonplace book
+        The commonplace book
       </Link>
       <article className="journal-page">
         <header>
@@ -95,7 +95,7 @@ export default async function NotePage({
               <ol>
                 {note.references.map((ref) => (
                   <li key={ref.url}>
-                    <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.title} ↗</a>
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.title}</a>
                   </li>
                 ))}
               </ol>
@@ -108,10 +108,10 @@ export default async function NotePage({
         {(previous || next) && (
           <nav className="reflection-neighbors" aria-label="Chronological reflection navigation">
             {previous && <Link href={`/reflections/${previous.slug}/`} rel="prev">
-              <span>← Previous reflection</span><span>{previous.title}</span>
+              <span>Previous reflection</span><span>{previous.title}</span>
             </Link>}
             {next && <Link className="reflection-next" href={`/reflections/${next.slug}/`} rel="next">
-              <span>Next reflection →</span><span>{next.title}</span>
+              <span>Next reflection</span><span>{next.title}</span>
             </Link>}
           </nav>
         )}

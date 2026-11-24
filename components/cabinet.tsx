@@ -29,7 +29,7 @@ export function Cabinet() {
           >
             <p>{item.description}</p>
             <Link className="text-link" href={item.href}>
-              {item.link} →
+              {item.link}
             </Link>
           </div>
         </div>

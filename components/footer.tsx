@@ -9,18 +9,22 @@ export function Footer() {
           <Link className="footer-name" href="/">
             {profile.name}
           </Link>
-          <p>Biology · Research · Medicine · Computation</p>
+          <p className="footer-disciplines">
+            {["Biology", "Research", "Medicine", "Computation"].map(discipline => (
+              <span key={discipline}>{discipline}{" "}</span>
+            ))}
+          </p>
         </div>
         <div className="footer-links">
           {profile.github && (
             <a href={profile.github} target="_blank" rel="noopener noreferrer">
-              GitHub ↗
+              GitHub
             </a>
           )}
           {profile.email ? (
-            <a href={`mailto:${profile.email}`}>Email ↗</a>
+            <a href={`mailto:${profile.email}`}>Email</a>
           ) : (
-            <Link href="/contact/">Correspondence ↗</Link>
+            <Link href="/contact/">Correspondence</Link>
           )}
         </div>
       </div>

@@ -19,7 +19,7 @@ export default async function ResearchDetail({ params }: { params: Promise<{ slu
  if (!item) notFound();
  const sections = ["Research Question", "Background", "Methods", "Computational Tools", "Results", "Figures", "Interpretation", "Limitations", "Current Status", "Future Directions", "Research Outputs"];
  return <div className="wrap page-shell">
-  <Link className="back-link" href="/research/">← Research index</Link>
+  <Link className="back-link" href="/research/">Research index</Link>
   <div className="page-intro dossier-intro">
    <p className="eyebrow">RESEARCH DOSSIER · {item.category}</p>
    <h1>{item.title}</h1><p className="page-description"><ScientificText>{item.projectTitle}</ScientificText></p>

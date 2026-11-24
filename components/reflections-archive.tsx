@@ -119,7 +119,7 @@ export function ReflectionsArchive({ entries }: { entries: ReflectionPreview[] }
               <h2><Link href={`/reflections/${entry.slug}/`}>{entry.title}</Link></h2>
               <p className="reflection-author">By {entry.author}</p>
               {entry.description && <p>{entry.description}</p>}
-              <Link className="text-link" href={`/reflections/${entry.slug}/`}>Read reflection <span>→</span></Link>
+              <Link className="text-link" href={`/reflections/${entry.slug}/`}>Read reflection </Link>
             </div>
             {entry.readingTime !== null && <span className="reading-time">{entry.readingTime} min read</span>}
           </article>

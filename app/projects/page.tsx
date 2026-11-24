@@ -40,11 +40,11 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Open project ↗
+                Open project
               </a>
             ) : (
               <Link className="text-link" href={`/projects/${p.slug}/`}>
-                Open project ↗
+                Open project
               </Link>
             )}
           </article>

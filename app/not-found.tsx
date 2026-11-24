@@ -13,7 +13,7 @@ export default function NotFound() {
           The address may have changed, or this entry has yet to be written.
         </p>
         <Link className="button" href="/">
-          Return to the study →
+          Return to the study
         </Link>
       </div>
     </div>

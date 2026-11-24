@@ -11,7 +11,7 @@ export function Header() {
       <div className="header-inner">
         <Link className="monogram" href="/" aria-label={`${profile.name} home`}>
           {profile.initials}
-          <span>✳</span>
+          <span className="monogram-dna" aria-hidden="true">🧬</span>
         </Link>
         <button
           className="menu-toggle"
